@@ -1,4 +1,4 @@
 SwipeableListView
 =================
 
-a sample of swipeable listview
+SwipeableListView is a ListView, which each item can swipe to dismiss.
