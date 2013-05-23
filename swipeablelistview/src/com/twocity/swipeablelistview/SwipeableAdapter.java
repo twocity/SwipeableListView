@@ -1,51 +1,10 @@
 package com.twocity.swipeablelistview;
 
-import java.util.List;
-
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public abstract class SwipeableAdapter extends BaseAdapter {
-
-	private Context mContext;
-	private List<String> mList;
-
-	public SwipeableAdapter(Context context, List<String> list) {
-		this.mContext = context;
-		this.mList = list;
-	}
-	
-	public void remove(Object obj) {
-		if (obj == null) {
-			return;
-		}
-		
-		mList.remove(obj);
-		notifyDataSetChanged();
-	}
-	
-	public void removeSelectedId(int id) {
-		mList.remove(id);
-		notifyDataSetChanged();
-	}
-	
-
-	@Override
-	public int getCount() {
-		return mList.size();
-	}
-
-	@Override
-	public String getItem(int position) {
-		return mList.get(position);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return 0;
-	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -64,6 +23,7 @@ public abstract class SwipeableAdapter extends BaseAdapter {
             }
 		}
 		v.setTag(getItem(position));
+		bindView(position, v);
 		return v;
 	}
 
