@@ -38,6 +38,7 @@ public class SwipeableListView extends ListView implements Callback {
     public static final String LOG_TAG = LogTag.getLogTag();
 
     private OnItemSwipeListener mOnItemSwipeListener;
+    private OnSwipeItemClickListener mOnSwipeClickListener;
 
     public SwipeableListView(Context context) {
         this(context, null);
@@ -95,6 +96,14 @@ public class SwipeableListView extends ListView implements Callback {
 
     public void setOnItemSwipeListener(OnItemSwipeListener listener) {
         mOnItemSwipeListener = listener;
+    }
+    
+    public void setOnSwipeItemClickListener(OnSwipeItemClickListener listener) {
+    	mOnSwipeClickListener = listener;
+    }
+    
+    public void onSwipeItemClick(int position, View view) {
+    	mOnSwipeClickListener.onClick(position, view);
     }
 
     @Override
@@ -182,5 +191,9 @@ public class SwipeableListView extends ListView implements Callback {
 
     public interface OnItemSwipeListener {
         public void onSwipe(View view);
+    }
+    
+    public interface OnSwipeItemClickListener {
+    	public void onClick(int position, View view);
     }
 }

@@ -3,8 +3,10 @@ package com.twocity.swipeablelistviewsample;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ public class NormalSwipeableAdapter extends SwipeableAdapter {
 		this.mContext = context;
 		this.mList = list;
 	}
-	
+
 	public void remove(Object obj) {
 		mList.remove(obj);
 		this.notifyDataSetChanged();
@@ -44,7 +46,18 @@ public class NormalSwipeableAdapter extends SwipeableAdapter {
 	protected View newView(ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		return inflater.inflate(R.layout.layout_swipe_normal_item, parent, false);
+		View v = inflater.inflate(R.layout.layout_swipe_normal_item, parent,
+				false);
+		v.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.v("", "======onClick");
+				
+			}
+		});
+		return v;
+
 	}
 
 	@Override
